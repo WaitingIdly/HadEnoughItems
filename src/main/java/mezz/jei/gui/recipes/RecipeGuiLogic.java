@@ -271,8 +271,9 @@ public class RecipeGuiLogic implements IRecipeGuiLogic {
 					result.add(recipe);
 				}
 			}
+			final IRecipeCategory<?> currentCategory = getSelectedRecipeCategory();
 			Minecraft.getMinecraft().addScheduledTask(() -> {
-				if (searchCount.get() > generation) {
+				if (searchCount.get() > generation || currentCategory != getSelectedRecipeCategory()) {
 					return;
 				}
 				RecipeGuiLogic.this.recipes = result;
